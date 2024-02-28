@@ -191,7 +191,7 @@ public abstract class Enemy : Unit
             ShowDamage(damageToUI.ToString(), damageType);
             StartCoroutine(ChangeColorOnReceiveDamage());
 
-            Game.Instance.screenFreeze.Freeze();
+            GameManager.Instance.PauseGame(GlobalSettings.Instance.ScreenFreezeDurationEnemyAttack);
 
             return true;
         }
@@ -215,7 +215,8 @@ public abstract class Enemy : Unit
             ShowDamage(damageToUI.ToString(), damageType);
             StartCoroutine(ChangeColorOnReceiveDamage());
 
-            Game.Instance.screenFreeze.Freeze();
+            GameManager.Instance.PauseGame(GlobalSettings.Instance.ScreenFreezeDurationEnemyAttack);
+
             KnockBack(force);
 
             return true;

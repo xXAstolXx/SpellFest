@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6828404206687684414}
-  - component: {fileID: 7420144305111090902}
   - component: {fileID: 1684248007976933229}
+  - component: {fileID: 399695287509816333}
   m_Layer: 0
   m_Name: FloatingTxtParent
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   - {fileID: 6299795398371962285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7420144305111090902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 672327962234954405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a4d726a062a8f4396b50425260d5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseAttackColor: {r: 1, g: 1, b: 1, a: 1}
-  fireAttackColor: {r: 1, g: 0.2760729, b: 0, a: 1}
-  iceAttackColor: {r: 0, g: 0.81646967, b: 1, a: 1}
 --- !u!114 &1684248007976933229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +47,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToDestroy: 1
+--- !u!114 &399695287509816333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672327962234954405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffbc2fb32c6984419499c3b0b00f02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicAttackColor: {r: 1, g: 1, b: 1, a: 1}
+  iceAttackColor: {r: 0, g: 1, b: 0.9690397, a: 1}
+  fireAttackColor: {r: 1, g: 0.325142, b: 0, a: 1}
 --- !u!1 &4551910641752975702
 GameObject:
   m_ObjectHideFlags: 0

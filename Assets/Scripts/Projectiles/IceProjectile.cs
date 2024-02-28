@@ -22,7 +22,7 @@ public class IceProjectile : ElementProjectile
 
             if (vector.magnitude - new Vector2((enemy.GetComponent<CapsuleCollider2D>().size.x / 2f) * Mathf.Abs(direction.x), (enemy.GetComponent<CapsuleCollider2D>().size.y / 2f) * Mathf.Abs(direction.y)).magnitude <= attack.AoeRadius[step])
             {
-                Game.Instance.cameraShake.TriggerShake(attack.ShakeStrength);
+                Camera.main.GetComponent<CameraShake>().TriggerShake(attack.ShakeStrength);
 
                 enemy.ReceiveAttack(attack.ImpactDamage[step], AttackType.ICEATTACK, source);
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GlobalSettings : MonoBehaviour
 {
-    public static GlobalSettings Instance { get; private set; }
+    public static GlobalSettings Instance { get; private set; } = null;
 
 
     public ElementSettings elementSettings { get; private set; }
@@ -21,6 +21,10 @@ public class GlobalSettings : MonoBehaviour
     [SerializeField]
     float uiDamageIncreaseMultiplier;
     public float UiDamageIncreaseMultiplier => uiDamageIncreaseMultiplier;
+
+    [SerializeField]
+    float screenFreezeDurationEnemyAttack;
+    public float ScreenFreezeDurationEnemyAttack => screenFreezeDurationEnemyAttack;
 
     [SerializeField]
     private int fps;

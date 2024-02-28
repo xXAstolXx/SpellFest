@@ -45,7 +45,6 @@ public class BaseProjectile : Projectile
                             TransformHelper.DirectionToAngle(vector.normalized),
                             direction * attack.EnemyKnockBackStrength[0],
                             source);
-        Game.Instance.cameraShake.ShakeMagnitude = attack.ShakeStrength;
     }
 
     protected override void TargetCollision(Collision2D collision)

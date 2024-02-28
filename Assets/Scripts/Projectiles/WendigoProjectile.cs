@@ -145,7 +145,7 @@ public class WendigoProjectile : Projectile
 
         if (vector.magnitude - new Vector2((player.GetComponent<BoxCollider2D>().size.x / 2f) * Mathf.Abs(direction.x), (player.GetComponent<BoxCollider2D>().size.y / 2f) * Mathf.Abs(direction.y)).magnitude <= attack.AoeRadius[step])
         {
-            Game.Instance.cameraShake.TriggerShake(attack.ShakeStrength);
+            Camera.main.GetComponent<CameraShake>().TriggerShake(attack.ShakeStrength);
 
             player.ReceiveAttack(attack.ImpactDamage[step],
                                 attack.Type,
