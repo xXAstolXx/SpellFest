@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a1e138912b34f44a335588e5cc5bf3, type: 3}
+  m_Name: Wendigo_Sound
+  m_EditorClassIdentifier: 
+  idleSound: {fileID: 0}
+  attackSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: b65483d9c8e038b4a9d887f774600f6d, type: 3}
+  deathSound: {fileID: 8300000, guid: 517e5d4116654fc4b9d9d15956b0a35a, type: 3}
+  switchPhaseSound: {fileID: 0}
+  hyperDeathBeamDeluxe: {fileID: 8300000, guid: 467d13ee630a24b498ba66653e57fac6, type: 3}
+  dashAttack: {fileID: 8300000, guid: fb92853493d9e73458a58cede7b0e4dc, type: 3}
+  arenaSound: {fileID: 8300000, guid: 94a5880a5f3652542af8da86012f2967, type: 3}

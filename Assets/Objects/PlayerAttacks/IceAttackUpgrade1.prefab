@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4061489232404857222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2289997373900340535}
+  - component: {fileID: 5104817720999046621}
+  m_Layer: 0
+  m_Name: IceAttackUpgrade1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2289997373900340535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061489232404857222}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.433853, y: 29.128479, z: -1.7389629}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5104817720999046621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061489232404857222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8024a26e20249c84aafa87d09d98d425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed:
+  - 15
+  - 20
+  - 25
+  impactDamage:
+  - 3
+  - 6
+  - 9
+  type: 3
+  enemyKnockBackStrength:
+  - 30
+  - 60
+  - 120
+  shakeStrength: 0.2
+  elementType: 2
+  maxDistance:
+  - 5
+  - 10
+  - 15
+  tileSpawnChance:
+  - 1
+  - 0.2
+  - 0.4
+  aoeRadius:
+  - 2
+  - 3
+  - 3
+  tileSpawnDelay: 0.28
+  effects:
+  - {fileID: 6629330538864272548, guid: 312581a267f756a438007144f2fb71b7, type: 3}
+  stunDuration: 5
+  unstunableDuration: 10
+  damageAmplifier: 2

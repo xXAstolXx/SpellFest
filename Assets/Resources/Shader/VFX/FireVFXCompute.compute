@@ -1,0 +1,276 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSUpdateBase
+#pragma kernel CSUpdateFlame
+#pragma kernel CSDraw
+#pragma kernel CSDedraw
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> renderTexture;
+
+Buffer<float4> baseSpawnProbBuffer;
+Buffer<float4> flameExpandProbBuffer;
+Buffer<float4> baseDeathProbBuffer;
+
+float flameSpawnProb;
+float4 baseExpandProb;
+
+RWBuffer<float4> test;
+
+RWBuffer<int> baseBuffer;
+RWBuffer<int> flameHeightBuffer;
+
+int resoX;
+int resoY;
+
+float4 innerColor;
+float4 middleColor;
+float4 outerColor;
+
+int spawnLimit;
+
+float time;
+
+float rand3dTo1d(float3 value, float3 dotDir = float3(12.9898, 78.233, 37.719))
+{
+	//make value smaller to avoid artefacts
+    float3 smallValue = sin(value);
+	//get scalar value from 3d vector
+    float random = dot(smallValue, dotDir);
+	//make value more random by making it bigger and then taking the factional part
+    random = frac(sin(random) * 143758.5453);
+    return random;
+}
+
+
+[numthreads(8,8,1)]
+void CSUpdateBase (int3 id : SV_DispatchThreadID)
+{
+    float x = id.x;
+    float y = id.y;
+    int index = y * resoX + x;
+    if (y >= resoX)
+    {
+        return;
+    }
+    
+    int halfReso = resoX / 2;
+    int lengthX;
+    int lengthY;
+    if (x < halfReso)
+    {
+        lengthX = halfReso - 1 - x;
+    }
+    else
+    {
+        lengthX = halfReso - x;
+    }
+    if (y < halfReso)
+    {
+        lengthY = halfReso - 1 - y;
+    }
+    else
+    {
+        lengthY = halfReso - y;
+    }
+    //float lengthRelX = (float)lengthX / (halfReso - 1);
+    //float lengthRelY = (float) lengthY / (halfReso - 1);
+    //int length = (int) sqrt(lengthRelX*lengthRelX + lengthRelY*lengthRelY);
+    
+    int length = clamp(round(sqrt((float) lengthX * lengthX + (float) lengthY * lengthY)),0,halfReso);
+
+    float randValue = rand3dTo1d(float3(x / resoX, y / resoX, time + 0.199));
+    
+    
+    float4 baseDeathProbX = baseDeathProbBuffer[x];
+    float4 baseDeathProbY = baseDeathProbBuffer[y];
+    if (baseBuffer[index] == 1)
+    {
+        if (randValue > baseDeathProbX.x * baseDeathProbY.x)
+        {
+            baseBuffer[index] = 0;
+            flameHeightBuffer[index] = 0;
+        }
+    }
+    else if (baseBuffer[index] == 2)
+    {
+        if (randValue > baseDeathProbX.y * baseDeathProbY.y)
+        {
+            baseBuffer[index] = 0;
+            flameHeightBuffer[index] = 0;
+        }
+    }
+    else if (baseBuffer[index] == 3)
+    {
+        if (randValue > baseDeathProbX.z * baseDeathProbY.z)
+        {
+            baseBuffer[index] = 0;
+            flameHeightBuffer[index] = 0;
+        }
+    }
+    
+    if (baseBuffer[index] != 0)
+    {
+        return;
+    }
+    
+    
+    randValue = rand3dTo1d(float3(x / resoX, y / resoX, time + 0.177));
+        
+    float4 baseSpawnProbX = baseSpawnProbBuffer[x];
+    float4 baseSpawnProbY = baseSpawnProbBuffer[y];
+    
+    if (randValue <= (baseSpawnProbX.x + baseSpawnProbY.x)/2)
+    {
+        baseBuffer[index] = 1;
+    }
+    else if (randValue <= (baseSpawnProbX.y + baseSpawnProbY.y)/2)
+    {
+        baseBuffer[index] = 2;
+    }
+    else if (randValue <= (baseSpawnProbX.z + baseSpawnProbY.z) / 2)
+    {
+        baseBuffer[index] = 3;
+    }
+}
+
+[numthreads(8, 8, 1)]
+void CSUpdateFlame(int3 id : SV_DispatchThreadID)
+{
+    float x = id.x;
+    float y = id.y;
+    int index = y * resoX + x;
+    
+    if (y >= resoX)
+    {
+        return;
+    }
+    
+    int flameHeight = flameHeightBuffer[ index];
+    if (flameHeight == 0)
+    {
+        float randValue = rand3dTo1d(float3(x / resoX, y / resoX, time + 0.087));
+        if (randValue <= flameSpawnProb)
+        {
+            flameHeightBuffer[index] = 1;
+        }
+    }
+    if (flameHeight != 0)
+    {
+        float4 flameExpandProb = flameExpandProbBuffer[flameHeight];
+        float randValue = rand3dTo1d(float3(x / resoX, y / resoX, time + 0.044));
+        if (baseBuffer[index] == 1)
+        {
+            if (randValue <= flameExpandProb.x)
+            {
+                flameHeightBuffer[index] = flameHeightBuffer[index] + 1;
+            }
+            else
+            {
+                flameHeightBuffer[index] = 0;
+
+            }
+        }
+        else if (baseBuffer[index] == 2)
+        {
+            if (randValue <= flameExpandProb.y)
+            {
+                flameHeightBuffer[index] = flameHeightBuffer[index] + 1;
+            }
+            else
+            {
+                flameHeightBuffer[index] = 0;
+            }
+        }
+        else if (baseBuffer[index] == 3)
+        {
+            if (randValue <= flameExpandProb.z)
+            {
+                flameHeightBuffer[index] = flameHeightBuffer[index] + 1;
+            }
+            else
+            {
+                flameHeightBuffer[index] = 0;
+
+            }
+        }
+        if (flameHeightBuffer[index] > resoX)
+        {
+            flameHeightBuffer[index] = resoX;
+        }
+    }
+}
+
+[numthreads(8, 8, 1)]
+void CSDedraw(int3 id : SV_DispatchThreadID)
+{
+    renderTexture[id.xy] = float4(0,0,0,0);
+
+}
+
+
+[numthreads(8, 8, 1)]
+void CSDraw(int3 id : SV_DispatchThreadID)
+{
+    float x = id.x;
+    float y = id.y;
+    int index = y * resoX + x;
+    
+    if (y != 0)
+    {
+        for (int i = clamp(y - resoX + 1, 0, y); i < y; i++)
+        {
+            int checkIndex = i * resoX + x;
+            if (flameHeightBuffer[checkIndex] + i >= y)
+            {
+                float4 color;
+                if (baseBuffer[checkIndex] == 0)
+                {
+                    continue;
+                }
+                else if (baseBuffer[checkIndex] == 1)
+                {
+                    color = innerColor;
+                }
+                else if (baseBuffer[checkIndex] == 2)
+                {
+                    color = middleColor;
+                }
+                else if (baseBuffer[checkIndex] == 3)
+                {
+                    color = outerColor;
+                }
+            
+                renderTexture[int2(x, y)] = color;
+                return;
+            }
+        }
+    }
+    
+    float4 color;
+    if (baseBuffer[index] == 0)
+    {
+        return;
+    }
+    else if (baseBuffer[index] == 1)
+    {
+        color = innerColor;
+    }
+    else if (baseBuffer[index] == 2)
+    {
+        color = middleColor;
+    }
+    else if (baseBuffer[index] == 3)
+    {
+        color = outerColor;
+    }
+            
+    renderTexture[int2(x, y)] = color;
+}
+
+[numthreads(8, 8, 1)]
+void CSInitialize(int3 id : SV_DispatchThreadID)
+{
+    renderTexture[id.xy] = float4(0,0,0,0);
+
+}

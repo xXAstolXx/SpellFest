@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe02e637362b0849a0d514b62e22743, type: 3}
+  m_Name: Game_Sound
+  m_EditorClassIdentifier: 
+  checkPointActivated: {fileID: 8300000, guid: a974de9290439dd498bd844a28334e38, type: 3}
+  arenaStartet: {fileID: 8300000, guid: 4d97da5c4e606b54493ab0b38c7e3b07, type: 3}
+  arenaCleared: {fileID: 8300000, guid: e8062eeedab0eb941846434e846e62a5, type: 3}

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2450282176434765832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8763923801965697139}
+  - component: {fileID: 3550329778108556357}
+  m_Layer: 0
+  m_Name: GlobalSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8763923801965697139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450282176434765832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3550329778108556357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450282176434765832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e5daab7cade0a458414252cc757d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sillyManSound: {fileID: 11400000, guid: 7df103ba865b3fc48b1a4682a3552045, type: 2}
+  slimeSound: {fileID: 11400000, guid: 596b636d45fb13a46a1e6d3add2fb6c8, type: 2}
+  archerSound: {fileID: 11400000, guid: 7b9d2694fb0c23c458fbd9d5587b7fde, type: 2}
+  wendigoSound: {fileID: 11400000, guid: b9eea9492f720ee44a132fc47e1fea2b, type: 2}
+  playerSound: {fileID: 11400000, guid: e5fde64a7210ae64f8603b9ca6c06606, type: 2}
+  gorbatSound: {fileID: 11400000, guid: dcf3e697868eeb04585dd4e95979f04c, type: 2}
+  wispsTalking: {fileID: 11400000, guid: 5c03c5c94d5b42842a76c550fc2d1fe5, type: 2}
+  itemSound: {fileID: 11400000, guid: 7cdd61e221ab78542a6f188f47e05ca2, type: 2}
+  gameSound: {fileID: 11400000, guid: fcabca8245d9d55479f2c571231860d9, type: 2}
