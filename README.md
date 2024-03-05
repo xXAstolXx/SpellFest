@@ -14,10 +14,14 @@ and strategically wield your magic to overcome any obstacle in your path.
 - One Unique Boss: the Wendigo
 - Dynamic Tile Creation and Transformation
 - The cat can be petted.
-## Responisbilities 
+## Responsibilities 
 - Production / Teamlead
 - [UI Programming](https://github.com/xXAstolXx/SpellFest/tree/main/Assets/Scripts/UI)
 - [Gameplay Programming](https://github.com/xXAstolXx/SpellFest/tree/main/Assets/Scripts/StageObjects)
 - [General Programming](https://github.com/xXAstolXx/SpellFest/tree/main/Assets/Scripts/NPC)
+
+## Tools
+- Unity and C#
+- Perforce (VCS)
 ## Website 
 ![Itch.io Icon](ReadMe/itch.io_icon.png)[SpellFest](https://s4g.itch.io/spellfest)
