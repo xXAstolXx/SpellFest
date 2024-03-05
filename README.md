@@ -20,4 +20,4 @@ and strategically wield your magic to overcome any obstacle in your path.
 - [Gameplay Programming](https://github.com/xXAstolXx/SpellFest/tree/main/Assets/Scripts/StageObjects)
 - [General Programming](https://github.com/xXAstolXx/SpellFest/tree/main/Assets/Scripts/NPC)
 ## Website 
-[SpellFest](https://s4g.itch.io/spellfest)
+![Itch.io Icon](ReadMe/itch.io_icon.png)[SpellFest](https://s4g.itch.io/spellfest)
